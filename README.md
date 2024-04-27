@@ -1,0 +1,4 @@
+# Hedgehog Roberta - Sentiment Analysis
+[Twitter-roBERTa-base for Sentiment Analysis](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) with a wrapper replacing its attention mechanism with [Hedgehog linear attention](https://arxiv.org/abs/2402.04347), finetuned on [tweet_eval](https://huggingface.co/datasets/tweet_eval).
+
+End-to-end training on both all parameters and only the hedgehog MLPs were tried with about equal validation performance, but both achieved at maximum about 68% accuracy whereas finetuning without modification to the model achieved about 77%. It's possible that this gap is a result of not using cross-entropy loss on the attention distribution relative to softmax attention to convert the model, or an error in implementation. I'll probably work on this more to see if I can get equivalent performance.
